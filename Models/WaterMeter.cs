@@ -1,9 +1,9 @@
 ﻿
-namespace Danfoss.Model
+namespace Danfoss.Models
 {
     public class WaterMeter
     {
         public int FactoryNumber { get; set; }
-        public int indication { get; set; }
+        public int Indication { get; set; }
     }
 }
