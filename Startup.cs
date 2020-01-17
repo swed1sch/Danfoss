@@ -6,14 +6,26 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Danfoss.Models;
 
 namespace Danfoss
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration) => 
+            Configuration = configuration;
         
+        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(
+                Configuration.GetConnectionString("DanfossHouse")));
+
+            services.AddTransient<IHouseRepository, EFHouseRepository>();
+            services.AddTransient<IWaterMeterRepository, EFWaterMeterRepository>();
             services.AddMvc();
         }
 
@@ -24,10 +36,14 @@ namespace Danfoss
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc(routes=> { });
+            app.UseMvc(routes=> 
+            {
+                routes.MapRoute
+                   (name: "default", template: "{controller=House}/{action=List}/{id?}");
+            });
             app.UseStaticFiles();
             app.UseStatusCodePages();
-            
+            SeedData.EnsurePopulated(app);
         }
     }
 }
