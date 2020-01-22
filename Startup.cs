@@ -40,10 +40,13 @@ namespace Danfoss
             {
                 routes.MapRoute
                    (name: "default", template: "{controller=House}/{action=List}/{id?}");
+                routes.MapRoute
+                   (name:"meter",template: "{controller=House}/{action=WaterMeterList}/{id?}");
             });
             app.UseStaticFiles();
             app.UseStatusCodePages();
-            SeedData.EnsurePopulated(app);
+            
+            //SeedData.EnsurePopulated(app);
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model Danfoss.Models.House
+
+<title>Create</title>
+<form asp-action="Create" method="post">
+    <p>
+        <label asp-for="Address">House address</label>
+        <input asp-for="Address" />
+    </p>
+    <p>
+        <label asp-for="waterMeter.FactoryNumber">Water Meter factory number</label>
+        <input asp-for="waterMeter.FactoryNumber" />
+    </p>
+    <p>
+        <label asp-for="waterMeter.Indication">Water Meter indication</label>
+        <input asp-for="waterMeter.Indication" />
+    </p>
+    <button type="submit">Accept</button>
+</form>

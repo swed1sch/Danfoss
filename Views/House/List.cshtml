@@ -1,13 +1,15 @@
-﻿    @model IEnumerable<House>
+﻿@model IEnumerable<House>
 
 
 
-    @foreach(var p in Model)
+@foreach (var p in Model)
 {
     <div>
-        @p.Address        
-        @p.waterMeter
-        @p.waterMeter
-        
+        @p.Address
+        @p.waterMeter.FactoryNumber
+        @p.waterMeter.Indication
     </div>
 }
+
+<a asp-action="WaterMeterList">Water Meter</a>
+<a asp-action="Create">Create House</a>

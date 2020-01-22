@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Danfoss.Models
 {
@@ -10,7 +11,12 @@ namespace Danfoss.Models
         {
             context = ctx;
         }
-        public IQueryable<House> Houses => context.Houses;
+        public IQueryable<House> Houses => context.Houses.Include(c => c.waterMeter);
+        public void AddHouse(House house)
+        {
+            this.context.Houses.Add(house);
+            this.context.SaveChanges();
+        }
         
         
     }

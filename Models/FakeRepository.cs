@@ -33,6 +33,11 @@ namespace Danfoss.Models
                 Indication=random.Next(100,200)
             }
             }}.AsQueryable<House>();
-        
+        public void AddHouse(House house)
+        {
+            List<House> houses = new List<House>();
+            houses = Houses.ToList();
+            houses.Add(house);
+        }
     }
 }

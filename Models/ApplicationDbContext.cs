@@ -6,6 +6,6 @@ namespace Danfoss.Models
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<House> Houses { get; set; }
-        public DbSet<WaterMeter> waterMeters { get; set; }
+        public DbSet<WaterMeter> WaterMeter { get; set; }
     }
 }

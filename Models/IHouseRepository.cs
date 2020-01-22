@@ -5,9 +5,9 @@ namespace Danfoss.Models
 {
     public interface IHouseRepository
     {
-        
+
         IQueryable<House> Houses { get; }
-        
+        void AddHouse(House house);
        
     }
 }

@@ -13,6 +13,6 @@ namespace Danfoss.Models
         {
             context = ctx;
         }
-        public IQueryable<WaterMeter> waterMeters => context.waterMeters;
+        public IQueryable<WaterMeter> waterMeters => context.WaterMeter;
     }
 }

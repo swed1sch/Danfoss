@@ -6,16 +6,23 @@ namespace Danfoss.Controllers
     public class HouseController:Controller
     {
         private IHouseRepository repository;
-        private IWaterMeterRepository repositoryw;
-        public HouseController(IHouseRepository repo,IWaterMeterRepository repow)
+
+        
+        public HouseController(IHouseRepository repo)
         {
             repository = repo;
-            repositoryw = repow;
+            
             
         }
         public ViewResult List() => View(repository.Houses);
-        //public ViewResult WaterMeterList() => View(repositoryw.waterMeters);
-       
+        public IActionResult Create() => View();
+        [HttpPost]
+        public IActionResult Create(House house)
+        {
+            repository.AddHouse(house);            
+            return RedirectToAction(nameof(List));
+        }
+        public IActionResult Thanks(House house) => View(house);
         
     }
 }

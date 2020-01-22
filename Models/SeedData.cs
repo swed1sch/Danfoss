@@ -15,7 +15,9 @@ namespace Danfoss.Models
             ApplicationDbContext context = app.ApplicationServices.
                 GetRequiredService<ApplicationDbContext>();
             context.Database.Migrate();
-
+            
+                
+            
             if (!context.Houses.Any())
             {
                 context.Houses.AddRange(
