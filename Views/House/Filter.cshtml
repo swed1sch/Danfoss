@@ -1,0 +1,12 @@
+﻿@model IEnumerable<House>
+
+
+@foreach (var p in Model)
+        {
+            <div class="row p-1">
+                <div class="col">@p.Address</div>
+                <div class="col">@p.waterMeter.FactoryNumber</div>
+                <div class="col">@p.waterMeter.Indication</div>
+
+            </div>
+        }

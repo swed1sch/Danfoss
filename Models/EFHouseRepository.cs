@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Danfoss.Models
 {
@@ -12,6 +12,8 @@ namespace Danfoss.Models
             context = ctx;
         }
         public IQueryable<House> Houses => context.Houses.Include(c => c.waterMeter);
+        
+        public IQueryable<House> HouseFilter => context.Houses.OrderBy(b=>context.Houses.Include(c=>c.waterMeter.Indication)); 
         public void AddHouse(House house)
         {
             this.context.Houses.Add(house);

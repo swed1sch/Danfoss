@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Danfoss.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200105105718_Initial")]
+    [Migration("20200124144630_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,15 +1,24 @@
 ﻿@model IEnumerable<House>
 
+    <h3 class="p-2 bg-primary text-white text-center">Houses</h3>
 
 
-@foreach (var p in Model)
-{
-    <div>
-        @p.Address
-        @p.waterMeter.FactoryNumber
-        @p.waterMeter.Indication
-    </div>
-}
+    <div class="row">
+        <div class="col font-weight-bold">Address</div>
+        <div class="col font-weight-bold">Factory Number</div>
+        <div class="col font-weight-bold"><a asp-action="Filter">Indication</a></div>
+        </div>
 
-<a asp-action="WaterMeterList">Water Meter</a>
-<a asp-action="Create">Create House</a>
+
+        @foreach (var p in Model)
+        {
+            <div class="row p-1">
+                <div class="col">@p.Address</div>
+                <div class="col">@p.waterMeter.FactoryNumber</div>
+                <div class="col">@p.waterMeter.Indication</div>
+
+            </div>
+        }
+
+        
+        <a asp-action="Create">Create House</a>

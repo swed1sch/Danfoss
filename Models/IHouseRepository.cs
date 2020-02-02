@@ -7,6 +7,7 @@ namespace Danfoss.Models
     {
 
         IQueryable<House> Houses { get; }
+        IQueryable<House> HouseFilter { get; }
         void AddHouse(House house);
        
     }
